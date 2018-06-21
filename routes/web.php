@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function() {
 
     Route::resource('clientes', 'ClienteController')->except(['show', 'destroy']);
+    Route::resource('recursos', 'RecursoController')->except(['show', 'destroy']);
 });
 
 

@@ -1,54 +1,54 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Editar cliente</div>
+                <div class="card-header">Cadastrar novo recurso</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('clientes.update', $cliente) }}">
+                    <form method="POST" action="{{ route('recursos.store') }}">
                         @csrf
-                        @method('PUT')
 
                         <div class="form-group row">
-                          <label for="nome" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                          <label for="descricao" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
 
                           <div class="col-md-6">
-                              <input id="nome" type="text" class="form-control{{ $errors->has('nome') ? ' is-invalid' : '' }}" name="nome" required autofocus value="{{old('nome', $cliente->nome)}}">
+                              <input id="descricao" type="text" class="form-control{{ $errors->has('descricao') ? ' is-invalid' : '' }}" name="descricao" required autofocus value="{{ old('descricao') }}">
 
-                              @if ($errors->has('nome'))
+                              @if ($errors->has('descricao'))
                                   <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $errors->first('nome') }}</strong>
+                                      <strong>{{ $errors->first('descricao') }}</strong>
                                   </span>
                               @endif
                         </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+                            <label for="unidade" class="col-sm-4 col-form-label text-md-right">{{ __('Unidade') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email', $cliente->email) }}">
+                                <input id="unidade" type="text" class="form-control{{ $errors->has('unidade') ? ' is-invalid' : '' }}" name="unidade" value="{{ old('unidade') }}">
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('unidade'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('unidade') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="telefone" class="col-sm-4 col-form-label text-md-right">{{ __('Telefone') }}</label>
+                            <label for="valor" class="col-sm-4 col-form-label text-md-right">{{ __('Valor') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telefone" type="telefone" class="form-control{{ $errors->has('telefone') ? ' is-invalid' : '' }}" name="telefone" value="{{ old('telefone', $cliente->telefone) }}">
+                                <input id="valor" type="number" class="form-control{{ $errors->has('valor') ? ' is-invalid' : '' }}" name="valor" value="{{ old('valor') }}" step="0.01">
 
-                                @if ($errors->has('telefone'))
+                                @if ($errors->has('valor'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('telefone') }}</strong>
+                                        <strong>{{ $errors->first('valor') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -60,7 +60,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Salvar') }}
                                 </button>
-                                <a class="btn btn-danger" href="{{ route('clientes.index') }}">
+                                <a class="btn btn-danger" href="{{ route('recursos.index') }}">
                                     {{ __('Cancelar') }}
                                 </a>
                             </div>
@@ -71,4 +71,5 @@
         </div>
     </div>
 </div>
+
 @endsection
